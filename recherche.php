@@ -8,5 +8,6 @@ if (isset($_GET['search'])) {
     $getAll = $sql->fetchAll();
     var_dump($sql); 
 }
+
 var_dump($getAll); 
 ?>
