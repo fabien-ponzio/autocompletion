@@ -10,10 +10,14 @@
 
         if ($sql->rowCount() >0) {
             $response = "<ul>"; 
-
+            session_start();
             while ($data = $sql->fetch(PDO::FETCH_ASSOC)){
                 // var_dump($data);
-                $response .="<li><a href='element.php/?id=".$data['id']."'>".$data['nom']."</li>";      
+                if ($_SESSION['page'] == "accueil") {
+                $response .="<li><a href='recherche.php?id=".$data['id']."'>".$data['nom']."</li>";    
+                }else {
+                $response .="<li><a href='element.php?id=".$data['id']."'>".$data['nom']."</li>";      
+                }   
             }
             $response .= "</ul>"; 
         }

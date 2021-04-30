@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<?php 
+    session_start();
+    $_SESSION['page'] = "accueil"
+    ?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- REQUIRE -->
-    <?php 
-    require_once('ajax.php');
-    require_once('recherche.php'); 
-    if (isset ($_GET['search'])) {
-    
-    }
-    ?>
+   
     <title>Auto-complétion</title>
     <!-- INSERER FEUILLE DE STYLE ICI -->
     <link rel="stylesheet" href="index.css">
     <!-- INSERER FEUILLE DE STYLE ICI -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
 </head>
 <body>
+<header>
+
+</header>
     <h1>"Auto-Complezione" (à lire en italien)</h1>
 
     <h2>Nom de joueur:</h2>
@@ -30,40 +32,8 @@
     </form>
 
     <div id="response"></div>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $("#Searchbox1").keyup(function(){
-            var query= $("#Searchbox1").val();
-            if (query.length == 0) {
-                $("#response").html("Veuillez entrer une lettre en majuscule");
-                return "Oeoeoeoe";
-            }
-            console.log(query); 
-        
-            $.ajax(
-                {
-                    url:'ajax.php',
-                    method:'POST',
-                    data:{
-                        search:1,
-                        q:query
-                    }, 
-                    success: function(data){
-                        $("#response").html(data); 
-                    }, 
-                    dataType:'text'
-                }
-            )
-        });
-
-        $(document).on('click', 'li', function () {
-            var player = $(this).text(); 
-            $("#Searchbox1").val(player);
-            $("#response").html("");
-        })
-    }); 
-
+    <script src='script.js' type="text/javascript">
+    
 
     </script>
 </body>
